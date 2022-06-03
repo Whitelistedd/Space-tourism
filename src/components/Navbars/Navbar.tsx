@@ -1,17 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import closeIcon from '../../assets/shared/icon-close.svg';
 import HamburgerIcon from '../../assets/shared/icon-hamburger.svg';
 import LogoSVG from '../../assets/shared/logo.svg';
 import { devices } from '../../MediaQueries';
 
 
 export const Navbar : React.FC = () => {
+
+  const [navMenuStatus,setNavMenuStatus] = useState<boolean>(false)
+
+  const toggleDrawer = (status : boolean) => {
+    setNavMenuStatus(status)
+  }
+  
   return (
     <Container>
         <Link to="/" ><Logo src={LogoSVG} /></Link>
-        <Menu src={HamburgerIcon} />
+        <Menu onClick={() => toggleDrawer(true)} src={HamburgerIcon} />
+        
+        <Drawer
+          open={navMenuStatus}
+          onClick={() => toggleDrawer(false)}
+        >
+          <CloseMenu onClick={() => toggleDrawer(true)} src={closeIcon} />
+          <List>
+            <NavLink to="/">
+              <ListItem>
+                  <ListTextNumber>00</ListTextNumber>
+                  <ListText>HOME</ListText>
+              </ListItem>
+            </NavLink>
+            <NavLink to="/destination">
+            <ListItem>
+                <ListTextNumber>01</ListTextNumber>
+                <ListText>DESTINATION</ListText>
+            </ListItem>
+            </NavLink>
+            <NavLink to="/crew">
+            <ListItem>
+                <ListTextNumber>02</ListTextNumber>
+                <ListText>CREW</ListText>
+            </ListItem>
+            </NavLink>
+            <NavLink to="/technology">
+            <ListItem>
+                <ListTextNumber>03</ListTextNumber>
+                <ListText>TECHNOLOGY</ListText>
+            </ListItem>
+            </NavLink>
+          </List>
+        </Drawer>
         <NavItems>
             <NavLink to="/" className={(navData) => (navData.isActive ? 'active' : 'unactive')} ><Item><Number>00</Number> HOME</Item></NavLink>
             <NavLink to="/destination" className={(navData) => (navData.isActive ? 'active' : 'unactive')} ><Item><Number>01</Number> DESTINATION</Item></NavLink>
@@ -28,6 +69,58 @@ const Menu = styled.img`
   display: none;
 `
 
+const CloseMenu = styled.img`
+  width: 20px;
+`
+
+const ListTextNumber = styled.span`
+  margin-right: 0.5em;
+  font-weight: 700;
+`
+
+const ListText = styled.span``
+
+const ListItem = styled.li`
+`
+
+const List = styled.ul`
+  padding: 0px;
+  margin: 0px;
+  gap: 2em;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: flex-start;
+  height: 50%;
+  font-family: "Barlow Condensed";
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+`
+
+const Drawer = styled.div<{open: boolean}>`
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(30.5485px);
+  color: rgb(255, 255, 255);
+  transition: 225ms ease;
+  box-shadow: rgb(0 0 0 / 20%) 0px 8px 10px -5px, rgb(0 0 0 / 14%) 0px 16px 24px 2px, rgb(0 0 0 / 12%) 0px 6px 30px 5px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15));
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1 0 auto;
+  z-index: 1200;
+  position: fixed;
+  top: 0px;
+  outline: 0px;
+  width: ${props => props.open ? "65%" : "0%"};
+  right: 0px;
+  align-items: flex-end;
+  padding: ${props => props.open ? "1.5em" : "0em"};
+`
 
 const Item = styled.li`
   color: inherit;
@@ -79,6 +172,7 @@ const NavItems = styled.ul`
       }
     }
 `
+
 
 const Container = styled.nav`
     display: flex;

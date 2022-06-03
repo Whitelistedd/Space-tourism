@@ -161,8 +161,11 @@ const Container = styled.div`
       }
   }
   @media only screen and (max-width: ${devices.Phone}) {
+      overflow: visible;
+      height: 120vh;
       ${Header} {
         gap: 0em;
+        padding-top: 8em;
       }
       ${Title} {
           font-size: 46px;
