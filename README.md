@@ -1,6 +1,6 @@
 # Space tourism
 
-# netflix-fullstack.vercel.app
+# https://spaceworld.vercel.app/
 
 У меня возникла идея просто сделать клон netflix, потому что я хотел проверить свои навыки и сделать их «сложную» анимацию и дизайн страниц.
 
@@ -11,7 +11,7 @@
 Чтобы скопировать проект git на свой компьютер с помощью Visual Studio
 
 ```
-git pull https://github.com/Whitelistedd/netflix-fullstack.git
+git pull https://github.com/Whitelistedd/Space-tourism.git
 ```
 
 Установить все пакеты проекта
@@ -41,8 +41,8 @@ npm run build
 ReactJS,
 Typescript,
 Styled-компоненты,
-Axios.
+Figma
 
 ## Авторы
 
--   **Volxen** - _Начало работы_ - [PurpleBooth] (https://github.com/Whitelistedd)
+-   **Volxen** - _Начало работы_ - (https://github.com/Whitelistedd)
