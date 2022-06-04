@@ -104,7 +104,7 @@ const Header = styled.header`
 `
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   color: white;
   overflow: hidden;
   background-color: black;

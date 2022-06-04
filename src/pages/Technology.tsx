@@ -78,9 +78,6 @@ const About = styled.article`
     }
 `
 
-const Image = styled.img`
-`
-
 const ImageWrap = styled.div<{src: {DesktopIMG: string,TabletIMG: string}}>`
     min-width: 35%;
     min-height: 70%;
@@ -125,7 +122,7 @@ const Header = styled.header`
 `
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   color: white;
   background-color: black;
   background-image: url(${TechIMG});
