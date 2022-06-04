@@ -122,7 +122,7 @@ const Header = styled.header`
 `
 
 const Container = styled.div`
-  min-height: 100vh;
+  min-height: 110vh;
   color: white;
   background-color: black;
   background-image: url(${TechIMG});
@@ -177,6 +177,10 @@ const Container = styled.div`
     }
     ${About} {
         height: 45%;
+        max-width: 70%;
+        .NavLocation {
+            display: none !important;
+        }
     }
     ${TechWrap} {
         gap: 3em;
@@ -209,7 +213,11 @@ const Container = styled.div`
     }
   }
   @media only screen and (max-width: ${devices.Phone}) {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
     ${Header} {
+        gap: 3em;
         .NavLocation {
             height: 9%;
             display: flex;
@@ -225,17 +233,21 @@ const Container = styled.div`
     }
     ${Desc}{
         font-size: 1rem;
+        width: 100%;
+    }
+    ${TechInfo} {
+        width: 100%;
     }
     ${About} {
         padding-top: 0.5em;
-        width: 90%;
+        width: 100vw;
         height: 45%;
         .NavLocation {
             display: none;
         }
     }
     ${TechWrap} {
-        gap: 0em;
+        gap: 2em;
         height: 100%;
         justify-content: space-around;
         flex-direction: column;

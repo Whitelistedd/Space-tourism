@@ -166,7 +166,7 @@ const Container = styled.div`
         height: 40%;
         width: 95%;
         flex-direction: column-reverse;
-        border-top: 2px solid #383B4B;
+
         
         .NavLocation {
             display: none;

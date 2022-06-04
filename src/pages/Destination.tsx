@@ -101,7 +101,7 @@ const DestinationWrap = styled.div`
 const Header = styled.header`
     display: flex;
     color: #D0D6F9;
-    height: 80%;
+    min-height: 80vh;
     align-items: center;
     justify-content: center;
     gap: 20em;
