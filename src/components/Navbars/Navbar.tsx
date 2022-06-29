@@ -6,6 +6,8 @@ import closeIcon from '../../assets/shared/icon-close.svg';
 import HamburgerIcon from '../../assets/shared/icon-hamburger.svg';
 import LogoSVG from '../../assets/shared/logo.svg';
 import { devices } from '../../MediaQueries';
+import { NavItems } from '../../data';
+import { NavLocation } from '../NavLocation/NavLocation';
 
 
 export const Navbar : React.FC = () => {
@@ -27,38 +29,20 @@ export const Navbar : React.FC = () => {
         >
           <CloseMenu onClick={() => toggleDrawer(true)} src={closeIcon} />
           <List>
-            <NavLink to="/">
-              <ListItem>
-                  <ListTextNumber>00</ListTextNumber>
-                  <ListText>HOME</ListText>
-              </ListItem>
-            </NavLink>
-            <NavLink to="/destination">
-            <ListItem>
-                <ListTextNumber>01</ListTextNumber>
-                <ListText>DESTINATION</ListText>
-            </ListItem>
-            </NavLink>
-            <NavLink to="/crew">
-            <ListItem>
-                <ListTextNumber>02</ListTextNumber>
-                <ListText>CREW</ListText>
-            </ListItem>
-            </NavLink>
-            <NavLink to="/technology">
-            <ListItem>
-                <ListTextNumber>03</ListTextNumber>
-                <ListText>TECHNOLOGY</ListText>
-            </ListItem>
-            </NavLink>
+            {
+              NavItems.map((item,index) => 
+                <DesktopNavLocation key={item} num={`${index}`} title={item} />  
+              )
+            }
           </List>
         </Drawer>
-        <NavItems>
-            <NavLink to="/" className={(navData) => (navData.isActive ? 'active' : 'unactive')} ><Item><Number>00</Number> HOME</Item></NavLink>
-            <NavLink to="/destination" className={(navData) => (navData.isActive ? 'active' : 'unactive')} ><Item><Number>01</Number> DESTINATION</Item></NavLink>
-            <NavLink to="/crew" className={(navData) => (navData.isActive ? 'active' : 'unactive')} ><Item><Number>02</Number> CREW</Item></NavLink>
-            <NavLink to="/technology" className={(navData) => (navData.isActive ? 'active' : 'unactive')} ><Item><Number>03</Number> TECHNOLOGY</Item></NavLink>
-        </NavItems>
+        <Nav>
+          {
+            NavItems.map((item,index) => 
+              <DesktopNavLocation key={item} num={`${index}`} title={item} />  
+            )
+          }
+        </Nav>
     </Container>
   )
 }
@@ -71,16 +55,6 @@ const Menu = styled.img`
 
 const CloseMenu = styled.img`
   width: 20px;
-`
-
-const ListTextNumber = styled.span`
-  margin-right: 0.5em;
-  font-weight: 700;
-`
-
-const ListText = styled.span``
-
-const ListItem = styled.li`
 `
 
 const List = styled.ul`
@@ -122,85 +96,96 @@ const Drawer = styled.div<{open: boolean}>`
   padding: ${props => props.open ? "1.5em" : "0em"};
 `
 
-const Item = styled.li`
-  color: inherit;
-`
-
 const Number = styled.span`
   font-weight: 700;
 `
 
-const NavItems = styled.ul`
+const DesktopNavLocation = styled(NavLocation)`
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  .num {
+    font-weight: 700;
+  }
+`
+
+
+const Nav = styled.ul`
+  display: flex;
+  font-family: "Barlow Condensed";
+  font-weight: 400;
+  list-style: none;
+  align-items: center;
+  gap: 5em;
+  position: relative;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(81.5485px);
+  padding: 0em 40em 0em 7em ;
+  height: 10vh;
+  left: 10%;
+  width: 62vw;
+  color: white;
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
     display: flex;
-    font-family: "Barlow Condensed";
-    font-weight: 400;
-    list-style: none;
     align-items: center;
-    gap: 5em;
-    position: relative;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(81.5485px);
-    padding: 0em 7em;
-    height: 10vh;
-    left: 15%;
-    width: 62vw;
-    color: white;
-    
-    a {
-      color: white;
-      text-decoration: none;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      
-    }
+  }
 
-    .active {
-      color: white;
-      border-bottom: 2px solid white;
+  .active {
+    border-bottom: 2px solid white;
+    margin-bottom: 0px;
+  } 
+
+  .unactive {
+    transition: opacity 200ms ease;
+    margin-bottom: 2px;
+    &:hover {
+      cursor: pointer;
       margin-bottom: 0px;
-    } 
-
-    .unactive {
-      transition: opacity 200ms ease;
-      margin-bottom: 2px; 
-      &:hover {
-        cursor: pointer;
-        margin-bottom: 0px;
-        border-bottom: 2px solid #d0d6f9b3;
-      }
+      border-bottom: 2px solid #d0d6f9b3;
     }
+  }
 `
 
 
 const Container = styled.nav`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2em 8em 0em 3em;
-    letter-spacing: 2px;
-
-    @media only screen and (max-width: ${devices.Tablet}) {
-      padding: 0em 3em;
-      ${NavItems} {
-        padding: 0em 3em;
-        gap: 2.5em;
-        margin: 0px;
-        left: 10%;
-      }
-      ${Number} {
-        display: none;
-      }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em 5em 0em 3em;
+  letter-spacing: 2px;
+  @media only screen and (max-width: ${devices.Laptop}) {
+    ${Nav} {
+      padding: 0em 50em 0em 2em;
+      left: 15%;
     }
+  }
 
-    @media only screen and (max-width: ${devices.Phone}) {
-      padding: 1.6em 2em 0em 2em;
-      ${Menu} {
-        display: block;
-      }
-      ${NavItems} {
-        display: none;
-      }
+  @media only screen and (max-width: ${devices.Tablet}) {
+    padding: 0em 3em;
+    ${Nav} {
+      padding: 0em 50em 0em 2em;
+      gap: 2.5em;
+      margin: 0px;
+      left: 16%;
+      font-size: 14px;
     }
+    ${Number} {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: ${devices.Phone}) {
+    padding: 1.6em 2em 0em 2em;
+    ${Menu} {
+      display: block;
+    }
+    ${Nav} {
+      display: none;
+    }
+  }
 `

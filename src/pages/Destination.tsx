@@ -6,7 +6,8 @@ import HeaderIMG from '../assets/destination/Destination.jpg';
 import { DestinationNav } from '../components/DestinationNav/DestinationNav';
 import { Navbar } from '../components/Navbars/Navbar';
 import { NavLocation } from '../components/NavLocation/NavLocation';
-import { planets } from '../information';
+import { PageLocation } from '../components/PageLocation/PageLocation';
+import { planets } from '../data';
 import { devices } from '../MediaQueries';
 
 export const Destination : React.FC = () => {
@@ -18,7 +19,7 @@ export const Destination : React.FC = () => {
         <Navbar />
         <Header>
             <DestinationWrap>
-                <NavLocation num="1" title="PICK YOUR DESTINATION" />
+                <PageLocation num="1" title="PICK YOUR DESTINATION" />
                 <Image src={planets[planet].image} />
             </DestinationWrap>
             <About>
@@ -43,14 +44,14 @@ export const Destination : React.FC = () => {
 
 const StatDesc = styled.p`
     font-family: "Bellefair";
-    font-size: 2rem;
+    font-size: 2em;
     margin-top: 0px;
 `
 
 const StatTitle = styled.h3`
     font-family: "Barlow Condensed";
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.2em;
 `
 
 const Stat = styled.div``
@@ -63,12 +64,13 @@ const Stats = styled.div`
 `
 
 const Desc = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.4em;
   line-height: 1.5em;
+  width: 400px;
 `
 
 const Title = styled.h2`
-  font-size: 7rem;
+  font-size: 7em;
   font-weight: 400;
   margin: 0px;
   color: white;
@@ -77,7 +79,7 @@ const Title = styled.h2`
 `
 
 const About = styled.article`
-    width: 25vw;
+    width: 400px;
     text-align: left;
 
 `
@@ -117,7 +119,23 @@ const Container = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
+  @media only screen and (max-width: ${devices.Desktop}) {
+    ${Header} {
+        gap: 10em;
+    }
+  }
+  @media only screen and (max-width: ${devices.Laptop}) {
+    ${Header} {
+        gap: 2em;
+    }
+    ${About} {
+        font-size: 13px;
+    }
+    ${Image} {
+          max-height: 75%;
+          width: 95%;
+      }
+  }
   @media only screen and (max-width: ${devices.Tablet}) {
       ${Header} {
           flex-direction: column;

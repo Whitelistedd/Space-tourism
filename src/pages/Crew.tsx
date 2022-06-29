@@ -6,7 +6,7 @@ import CrewIMG from '../assets/crew/crew.jpg';
 import { CrewNav } from '../components/CrewNav/CrewNav';
 import { Navbar } from '../components/Navbars/Navbar';
 import { NavLocation } from '../components/NavLocation/NavLocation';
-import { CrewMembers } from '../information';
+import { CrewMembers } from '../data';
 import { devices } from '../MediaQueries';
 
   

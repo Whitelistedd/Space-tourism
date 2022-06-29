@@ -7,7 +7,7 @@ import TechIMG from '../assets/technology/Tech.jpg';
 import { Navbar } from '../components/Navbars/Navbar';
 import { NavLocation } from '../components/NavLocation/NavLocation';
 import { TechnologyNav } from '../components/TechnologyNav/TechnologyNav';
-import { Tech } from '../information';
+import { Tech } from '../data';
 import { devices } from '../MediaQueries';
 
 export const Technology : React.FC = () => {

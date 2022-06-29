@@ -33,12 +33,12 @@ export const Home : React.FC = () => {
 
 const Desc = styled.p`
   line-height: 1.5em;
-  font-size: 18px;
+  font-size: 1.2em;
   opacity: 0.8;
 `
 
 const Strong = styled.strong`
-  font-size: 10rem;
+  font-size: 10em;
   font-weight: 400;
   font-family: "Bellefair";
   color: white
@@ -46,13 +46,14 @@ const Strong = styled.strong`
 
 const Title = styled.h1`
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 2em;
   letter-spacing: 5px;
+  white-space: nowrap;
 `
 
 const ButtonOuter = styled.button`
   font-family: "Bellefair";
-  font-size: 2.5rem;
+  font-size: 2.5em;
   padding: 3.5em 2em;
   border: none;
   background-color: rgba(255,255,255,0.2);
@@ -96,7 +97,7 @@ const ButtonWrap = styled.div`
 `
 
 const About = styled.article`
-   width: 25vw;
+   width: 400px;
    font-family: "Barlow Condensed";
    color: #D0D6F9;
 `
@@ -118,6 +119,22 @@ const Container = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  @media only screen and (max-width: ${devices.Desktop}) {
+    ${Header} {
+      padding: 0em 4em;
+      font-size: 14px;
+    }
+  }
+
+  @media only screen and (max-width: ${devices.Laptop}) {
+    ${StyledLink} {
+      padding: 3.5em 0em;
+    }
+    ${ButtonWrap} {
+      margin-right: 0px;
+    }
+  }
 
   @media only screen and (max-width: ${devices.Tablet}) {
     background-image: url(${HeaderTabletBackground});

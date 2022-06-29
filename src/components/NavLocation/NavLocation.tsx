@@ -1,44 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { NavLink } from 'react-router-dom';
 import { devices } from '../../MediaQueries';
 
 interface Props {
     num: string,
-    title: string
+    title: string,
+    className?: string
 }
 
-export const NavLocation : React.FC<Props> = ({num,title}) => {
+export const NavLocation : React.FC<Props> = ({title,num,className}) => {
   return (
-    <Container className="NavLocation" >
-        <Number>0{num}</Number>
-        <Title>{title}</Title>
-    </Container>
+    <NavLink className={(navData) => (navData.isActive ? 'active' : 'unactive')} to={`/${title === "HOME" ? "" : title}`} >
+        <Container className={className} >
+            <Number className='num' >0{num}</Number>
+            <Title className='title' >{title}</Title>
+        </Container>
+    </NavLink>
   )
 }
 
 
-const Title = styled.h1`
-    font-weight: 400;
+const Title = styled.span`
 `
 
-const Number = styled.h1`
-    opacity: 25%;
+const Number = styled.p`
 `
 
-const Container = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    font-size: 20px;
-    letter-spacing: 3px;
-    
-    @media only screen and (max-width: ${devices.Tablet}) {
-        ${Title} {
-            font-size: 1.1rem;
-        }
-        ${Number} {
-            font-size: 1.1rem;
-        }
-    }
+const Container = styled.li`
 `

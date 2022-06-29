@@ -13,6 +13,12 @@ import TechTwoDesktopIMG from './assets/technology/image-space-capsule-portrait.
 import TechThreeTabletIMG from './assets/technology/image-spaceport-landscape.jpg';
 import TechThreeDesktopIMG from './assets/technology/image-spaceport-portrait.jpg';
 
+export const NavItems : string[] = [
+    "HOME",
+    "DESTINATION",
+    "CREW",
+    "TECHNOLOGY",
+] 
 
 export const planets = [
     {
