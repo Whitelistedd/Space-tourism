@@ -5,11 +5,12 @@ import { devices } from '../../MediaQueries'
 interface Props {
     num: string,
     title: string,
+    className?: string
 }
 
-export const PageLocation : React.FC<Props> = ({num,title}) => {
+export const PageLocation : React.FC<Props> = ({num,title,className}) => {
   return (
-    <Container >
+    <Container className={`${className} PageLocation`} >
         <Number className='num' >0{num}</Number>
         <Title className='title' >{title}</Title>
     </Container>

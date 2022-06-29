@@ -12,13 +12,15 @@ export const CrewNav : React.FC<Props> = ({setNavNumber,navNumber}) => {
         setNavNumber(number)
     }
 
+
   return (
     <Container>
         <Wrap>
-        <Option onClick={() => handleClick(0)} className={navNumber === 0 ? "active" : "unactive"} />
-        <Option onClick={() => handleClick(1)} className={navNumber === 1 ? "active" : "unactive"} />
-        <Option onClick={() => handleClick(2)}  className={navNumber === 2 ? "active" : "unactive"} />
-        <Option onClick={() => handleClick(3)} className={navNumber === 3 ? "active" : "unactive"} />
+            {
+                Array(4).fill(8).map((num,index) => 
+                    <Option key={index} onClick={() => handleClick(index)} className={navNumber === index ? "active" : "unactive"} />
+                )
+            }
         </Wrap>
     </Container>
   )

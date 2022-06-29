@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import CrewIMG from '../assets/crew/crew.jpg';
 import { CrewNav } from '../components/CrewNav/CrewNav';
 import { Navbar } from '../components/Navbars/Navbar';
-import { NavLocation } from '../components/NavLocation/NavLocation';
+import { PageLocation } from '../components/PageLocation/PageLocation';
 import { CrewMembers } from '../data';
 import { devices } from '../MediaQueries';
 
@@ -21,7 +21,7 @@ export const Crew : React.FC = () => {
         <Header>
             <About>
                 <CrewWrap>
-                    <NavLocation num="2" title="MEET YOUR CREW" />
+                    <PageLocation num="2" title="MEET YOUR CREW" />
                 </CrewWrap>
                 <CrewInfo>
                     <Title>COMMANDER</Title>
@@ -33,36 +33,37 @@ export const Crew : React.FC = () => {
             <ImageWrap>
                 <Image src={CrewMembers[navNumber].image} />
             </ImageWrap>
-            <NavLocation num="2" title="MEET YOUR CREW" />
+            <MobilePageLocation num="2" title="MEET YOUR CREW" />
         </Header>
     </Container>
   )
 }
 
 const Desc = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.4em;
   line-height: 1.5em;
   font-family: "Barlow";
 `
 
 const Strong = styled.h2`
     font-weight: 400;
-    font-size: 4rem;
+    font-size: 4em;
     margin: 0.5em 0em;
     opacity: 100%;
     color: white;
 `
 
 const Title = styled.h2`
-  font-size: 2.5rem;
+  font-size: 2.5em;
   font-weight: 400;
   opacity: 50.42%;
   color: white;
 `
 
 const About = styled.article`
-    width: 40vw;
-    height: 100vh;
+    width: 800px;
+    min-height: 300px;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -70,14 +71,16 @@ const About = styled.article`
 `
 
 const Image = styled.img`
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
 `
 
 const ImageWrap = styled.div`
-    width: 40vw;
+    max-width: 60vw;
     display: flex;
     align-items: flex-end;
-    height: 90%;
+    min-height: 500px;
+    height: 60vw;
 `
 
 const CrewWrap = styled.div`
@@ -86,6 +89,9 @@ const CrewWrap = styled.div`
     gap: 30px;
     font-size: 20px;
     letter-spacing: 3px;
+    .PageLocation {
+        display: flex;
+    }
 `
 
 const CrewInfo = styled.div`
@@ -93,10 +99,13 @@ const CrewInfo = styled.div`
     color: white;
 `
 
+const MobilePageLocation = styled(PageLocation)`
+    display: none;
+`
+
 const Header = styled.header`
     display: flex;
     color: #D0D6F9;
-    height: 85vh;
     width: 100%;
     align-items: flex-end;
     justify-content: space-around;
@@ -113,42 +122,44 @@ const Container = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
 
-    .NavLocation {
-        display: none;
+  @media only screen and (max-width: ${devices.Desktop}) {
+    ${About} {
+        padding: 3em;
+        font-size: 12px;
+        width: 600px;
     }
+  }
+
+  @media only screen and (max-width: ${devices.Laptop}) {
+    ${About} {
+        font-size: 8px;
+        width: 400px;
+    }
+  }
 
   @media only screen and (max-width: ${devices.Tablet}) {
       ${Header} {
         flex-direction: column;
         align-items: center;
-        height: 90vh;
+        height: 100vh;
+        gap: 2em;
       }
       ${About} {
           align-items: center;
           text-align: center;
-          width: 90%;
+          width: 500px;
           padding: 0px;
           justify-content: center;
           gap: 1em;
+          font-size: 12px;
       }
       ${ImageWrap} {
-          height: 55%;
-          align-items: flex-end;
-          justify-content: center;
+          max-width: 70vw;
+          max-height: 500px;
+          align-items: center;
       }
       ${CrewWrap} {
         align-self: flex-start;
-      }
-      ${Title} {
-          font-size: 1.5rem;
-      }
-      ${Strong} {
-          font-size: 2.5rem
-      }
-      ${Desc} {
-          font-size: 1.1rem;
-          color: #D0D6F9;
-          width: 60vw;
       }
       ${Image} {
           height: 100%;
@@ -157,37 +168,26 @@ const Container = styled.div`
   @media only screen and (max-width: ${devices.Phone}) {
       ${Header} {
           flex-direction: column-reverse;
-        .NavLocation {
-            display: flex;
-        }
+      }
+      ${MobilePageLocation} {
+        display: flex;
       }
       ${About} {
         padding-top:50px;
         height: 40%;
         width: 95%;
         flex-direction: column-reverse;
-
-        
-        .NavLocation {
+        font-size: 8px;
+        .PageLocation {
             display: none;
         }
       }
       ${ImageWrap} {
-          height: 30%;
+          min-height: 200px;
           margin-bottom: -90px;
       }
       ${Image} {
           height: 110%;
-      }
-      ${Title} {
-          font-size: 1rem;
-      }
-      ${Desc}{
-          font-size: 1rem;
-          width: 100%;
-      }
-      ${Strong} {
-          font-size: 1.5rem;
       }
   }
 `
