@@ -63,7 +63,7 @@ const Title = styled.h2`
 const About = styled.article`
     width: 800px;
     min-height: 300px;
-    height: 90vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -76,11 +76,11 @@ const Image = styled.img`
 `
 
 const ImageWrap = styled.div`
-    max-width: 60vw;
+    max-width: 35vw;
     display: flex;
     align-items: flex-end;
-    min-height: 500px;
-    height: 60vw;
+    min-height: 400px;
+    height: 35vw;
 `
 
 const CrewWrap = styled.div`
@@ -135,6 +135,9 @@ const Container = styled.div`
         font-size: 8px;
         width: 400px;
     }
+    ${ImageWrap} {
+        max-width: 400px;
+    }
   }
 
   @media only screen and (max-width: ${devices.Tablet}) {
@@ -185,8 +188,8 @@ const Container = styled.div`
         }
       }
       ${ImageWrap} {
-          min-height: 200px;
-          margin-bottom: -90px;
+        max-width: 300px;
+        min-height: 300px;
       }
       ${Image} {
           height: 110%;

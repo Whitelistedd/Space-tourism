@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
 import HeaderIMG from '../assets/destination/Destination.jpg';
 import { DestinationNav } from '../components/DestinationNav/DestinationNav';
 import { Navbar } from '../components/Navbars/Navbar';
-import { NavLocation } from '../components/NavLocation/NavLocation';
 import { PageLocation } from '../components/PageLocation/PageLocation';
 import { planets } from '../data';
 import { devices } from '../MediaQueries';
@@ -13,6 +12,8 @@ import { devices } from '../MediaQueries';
 export const Destination : React.FC = () => {
     const [planet,setPlanet] = useState<number>(0)
 
+    useEffect(() => {
+    },[])
 
   return (
     <Container>
@@ -86,6 +87,7 @@ const About = styled.article`
 
 const Image = styled.img`
     max-height: 50vh;
+    transform: rotate(deg 90px);
 `
 
 const DestinationWrap = styled.div`
