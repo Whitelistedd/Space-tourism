@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import TechTabletIMG from '../assets/technology/background-technology-tablet.jpg';
 import TechIMG from '../assets/technology/Tech.jpg';
 import { Navbar } from '../components/Navbars/Navbar';
-import { NavLocation } from '../components/NavLocation/NavLocation';
+import { PageLocation } from '../components/PageLocation/PageLocation';
 import { TechnologyNav } from '../components/TechnologyNav/TechnologyNav';
 import { Tech } from '../data';
 import { devices } from '../MediaQueries';
@@ -20,7 +20,7 @@ export const Technology : React.FC = () => {
         <Header>
             <About>
                 {/*для компьютеров*/}
-                <NavLocation num="3" title="SPACE LAUNCH 101" />
+                <PageLocation num="3" title="SPACE LAUNCH 101" />
                 <TechWrap>
                     <TechnologyNav setNavNumber={setNavNumber} navNumber={navNumber} />
                     <TechInfo>
@@ -33,30 +33,33 @@ export const Technology : React.FC = () => {
             <ImageWrap src={Tech[navNumber]} >
             </ImageWrap>
             {/*для планшетов */}
-            <NavLocation num="3" title="SPACE LAUNCH 101" />
+            <MobilePageLocation num="3" title="SPACE LAUNCH 101" />
         </Header>
     </Container>
   )
 }
 
+const MobilePageLocation = styled(PageLocation)`
+    display: none;
+`
+
 const Desc = styled.p`
-  font-size: 1.1rem;
+  font-size: 1.1em;
   line-height: 1.5em;
   font-family: "Barlow";
-  width: 70%;
   font-weight: 400;
 `
 
 const Strong = styled.h2`
     font-weight: 400;
-    font-size: 3.5rem;
+    font-size: 3.5em;
     margin: 0.2em 0em;
     opacity: 100%;
     color: white;
 `
 
 const Title = styled.h2`
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: 400;
   margin: 0px;
   font-family: "Barlow Condensed";
@@ -64,14 +67,14 @@ const Title = styled.h2`
 `
 
 const About = styled.article`
-    width: 60%;
+    width: 650px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     
-    .NavLocation {
-        display: flex !important;
+    .PageLocation {
+        display: flex ;
         h1 {
             font-size: 1.7rem;
         }
@@ -79,7 +82,7 @@ const About = styled.article`
 `
 
 const ImageWrap = styled.div<{src: {DesktopIMG: string,TabletIMG: string}}>`
-    min-width: 35%;
+    min-width: 45%;
     min-height: 70%;
     background-color: black;
     background-image: url(${props => props.src.DesktopIMG});
@@ -111,14 +114,12 @@ const Header = styled.header`
     color: #D0D6F9;
     height: 83vh;
     width: 100%;
+    gap: 1em;
     align-items: center;
     justify-content: space-between;
     padding-left: 10em;
     font-family: "Barlow Condensed";
-    
-    .NavLocation {
-        display: none;
-    }
+
 `
 
 const Container = styled.div`
@@ -131,17 +132,27 @@ const Container = styled.div`
   background-repeat: no-repeat;
   overflow: hidden;
 
+  @media only screen and (max-width: ${devices.Desktop}) {
+    ${Header} {
+        padding-left: 6em; 
+    }
+    ${About} {
+        font-size: 14px;
+        width: 560px;
+    }
+  }
+
   @media only screen and (max-width: ${devices.Laptop}) {
     ${Header} {
-        padding-left: 3em;
+        padding-left: 1em;
     }
 
     ${Strong} {
-        font-size: 2.5rem;
+        font-size: 2.5em;
     }
 
     ${ImageWrap} {
-        width: 50%;
+        min-width: 40%;
         min-height: 60%;
     }
 
@@ -150,12 +161,8 @@ const Container = styled.div`
         li {
             width: 60px;
             height: 60px;
-            font-size: 1.7rem;
+            font-size: 1.7em;
         }
-    }
-    
-    ${About} {
-          max-width: 50%;
     }
   }
 
@@ -167,19 +174,19 @@ const Container = styled.div`
         justify-content: center;
         gap: 1em;
         padding: 0px;
-        .NavLocation {
-            height: 9%;
-            display: flex;
-            align-items: center;
-            align-self: flex-start;
-            padding-left: 2em;
-        }
+    }
+    ${MobilePageLocation} {
+        height: 9%;
+        display: flex;
+        align-items: center;
+        align-self: flex-start;
+        padding-left: 2em;
     }
     ${About} {
-        height: 45%;
-        max-width: 70%;
-        .NavLocation {
-            display: none !important;
+        height: 75%;
+        max-width: 90%;
+        .PageLocation {
+            display: none ;
         }
     }
     ${TechWrap} {
@@ -195,7 +202,7 @@ const Container = styled.div`
         }
     }
     ${ImageWrap} {
-        width: 100%;
+        width: 110%;
         max-height: 40%;
         min-height: 35%;
     }
@@ -204,13 +211,6 @@ const Container = styled.div`
         text-align: center;
         padding: 0px;
     }
-    ${Strong} {
-        font-size: 2rem;
-    }
-    ${Desc} {
-        margin: 0px;
-        width: 100%;
-    }
   }
   @media only screen and (max-width: ${devices.Phone}) {
     display: flex;
@@ -218,22 +218,6 @@ const Container = styled.div`
     gap: 2em;
     ${Header} {
         gap: 3em;
-        .NavLocation {
-            height: 9%;
-            display: flex;
-            align-self: center;
-            padding: 0px;
-        }
-    }
-    ${Title} {
-        font-size: 0.9rem;
-    }
-    ${Strong} {
-        font-size: 1.5rem;
-    }
-    ${Desc}{
-        font-size: 1rem;
-        width: 100%;
     }
     ${TechInfo} {
         width: 100%;
@@ -242,7 +226,7 @@ const Container = styled.div`
         padding-top: 0.5em;
         width: 100vw;
         height: 45%;
-        .NavLocation {
+        .PageLocation {
             display: none;
         }
     }

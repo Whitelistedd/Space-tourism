@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { devices } from '../../MediaQueries';
 
 interface Props {
     setNavNumber: (p: number) => void,
@@ -54,6 +55,13 @@ const Container = styled.nav`
         &:hover {
             cursor: pointer;
             opacity: 1;
+        }
+    }
+
+    @media only screen and (max-width: ${devices.Desktop}) {
+        ${Option} {
+            width: 70px;
+            height: 70px;
         }
     }
 `

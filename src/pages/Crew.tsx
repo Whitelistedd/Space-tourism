@@ -168,6 +168,7 @@ const Container = styled.div`
   @media only screen and (max-width: ${devices.Phone}) {
       ${Header} {
           flex-direction: column-reverse;
+          justify-content: center;
       }
       ${MobilePageLocation} {
         display: flex;
@@ -178,6 +179,7 @@ const Container = styled.div`
         width: 95%;
         flex-direction: column-reverse;
         font-size: 8px;
+        gap: 1em;
         .PageLocation {
             display: none;
         }

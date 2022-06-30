@@ -153,12 +153,6 @@ const Container = styled.div`
               align-self: flex-start;
           }
       }
-      ${Title} {
-          font-size: 5rem;
-      }
-      ${Desc} {
-          font-size: 1.1rem;
-      }
       ${About} {
           width: 80vw;
           display: flex;
@@ -167,15 +161,10 @@ const Container = styled.div`
           justify-content: center;
           text-align: center;
           gap: 1em;
+          font-size: 12px;
       }
       ${Stats} {
           justify-content: center;
-      }
-      ${StatTitle} {
-        font-size: 1rem;
-      }
-      ${StatDesc} {
-          font-size: 1.9rem;
       }
   }
   @media only screen and (max-width: ${devices.Phone}) {
@@ -185,17 +174,15 @@ const Container = styled.div`
         gap: 0em;
         padding-top: 8em;
       }
-      ${Title} {
-          font-size: 46px;
-      }
       ${About} {
           gap: 0em;
           li {
               font-size: 1rem;
           }
+          font-size: 10px;
       }
       ${Desc} {
-          font-size: 18px;
+        width: 95%;
       }
       ${DestinationWrap} {
           div {
